@@ -20,7 +20,8 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);backgroun
 .container{width:min(1120px,92%);margin:auto}
 header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid #e7eee8;backdrop-filter:blur(8px)}
 .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{height:56px;width:auto;display:block}
+.logo{height:56px;width:auto;display:block;animation:spinLogo 8s linear infinite}
+@keyframes spinLogo{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .nav a{color:var(--dark);text-decoration:none;font-weight:700;margin-left:22px}
 .hero{background:linear-gradient(135deg,#efffd8 0%,#fff 58%,#e9f7ed 100%);padding:72px 0 64px}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px}
