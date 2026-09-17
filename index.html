@@ -51,17 +51,14 @@ h1{font-size:clamp(38px,5vw,64px);line-height:1.03;margin:18px 0 18px;color:var(
   height:auto;
   display:block;
   transform-origin:center 40%;
-  animation:keyFlip 4s ease-in-out infinite;
+  animation:keySpin 8s linear infinite;
 }
 
-@keyframes keyFlip{
-  0%,20%{
+@keyframes keySpin{
+  from{
     transform:perspective(800px) rotateY(0deg);
   }
-  50%,70%{
-    transform:perspective(800px) rotateY(180deg);
-  }
-  100%{
+  to{
     transform:perspective(800px) rotateY(360deg);
   }
 }
