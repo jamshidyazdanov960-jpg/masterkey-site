@@ -2,100 +2,210 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> MASTERKEY — производитель полиэтиленовой продукции </title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MASTERKEY — производитель полиэтиленовой продукции</title>
 <meta name="description" content="MASTERKEY — производитель полиэтиленовой продукции. Пакеты, плёнки и упаковочные материалы различных видов и размеров.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --green:#006b35;
   --green2:#8bd400;
   --dark:#07351f;
   --yellow:#ffd91a;
-  --light:#f5f8f4;
+  --light:#f3f7f2;
+  --line:#dfe9e1;
   --text:#17231c;
+  --muted:#5c6b61;
 }
+:root:not([data-theme="light"]){}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
-.container{width:min(1120px,92%);margin:auto}
-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid #e7eee8;backdrop-filter:blur(8px)}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{height:56px;width:auto;display:block}
-.nav a{color:var(--dark);text-decoration:none;font-weight:700;margin-left:22px}
-.hero{background:linear-gradient(135deg,#efffd8 0%,#fff 58%,#e9f7ed 100%);padding:72px 0 64px}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px}
-.badge{display:inline-block;background:var(--green);color:#fff;border-radius:999px;padding:9px 15px;font-size:14px;font-weight:700}
-h1{font-size:clamp(38px,5vw,64px);line-height:1.03;margin:18px 0 18px;color:var(--dark)}
-.hero p{font-size:20px;line-height:1.5;max-width:650px;color:#425047}
-.btn{display:inline-block;padding:14px 22px;border-radius:12px;text-decoration:none;font-weight:800;margin:7px 8px 0 0}
+body{margin:0;font-family:'Inter',Arial,sans-serif;color:var(--text);background:#f6f9f4;-webkit-font-smoothing:antialiased}
+
+/* animated production-line background */
+.factory-bg{position:fixed;inset:0;z-index:-2;overflow:hidden;opacity:.4;pointer-events:none}
+.factory-bg svg{position:absolute;top:0;left:0}
+.factory-machine{width:min(46vw,560px);top:8%;left:-2%}
+.conveyor-wrap{position:absolute;left:0;right:0;bottom:6%;height:80px;overflow:hidden}
+.conveyor-row{display:flex;align-items:center;gap:56px;width:max-content;animation:conveyorMove 26s linear infinite}
+.conveyor-row svg{width:64px;height:64px;flex:none}
+@keyframes conveyorMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.factory-bg{display:none}}
+@media(max-width:700px){.factory-bg{opacity:.3}.factory-machine{display:none}}
+h1,h2,h3{font-family:'Manrope',Arial,sans-serif}
+.container{width:min(1160px,92%);margin:auto}
+a{color:inherit}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top,0)}
+.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;color:var(--dark)}
+.brand-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--green),var(--green2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{text-decoration:none;font-weight:600;font-size:15px;color:var(--dark)}
+.nav-cta{background:var(--green);color:#fff !important;padding:10px 18px;border-radius:10px}
+.burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
+.burger span{display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;border-radius:2px}
+
+/* hero */
+.hero{background:rgba(255,255,255,.62);padding:64px 0 56px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);color:var(--dark);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green2)}
+h1{font-size:clamp(34px,4.6vw,54px);line-height:1.08;margin:18px 0 16px;color:var(--dark);font-weight:800;max-width:16ch}
+.hero p{font-size:18px;line-height:1.55;max-width:560px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:11px;text-decoration:none;font-weight:700;font-size:15px;margin:8px 10px 0 0;border:0;cursor:pointer;transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
 .btn-primary{background:var(--green);color:#fff}
 .btn-secondary{background:var(--yellow);color:#1c2500}
-.hero-logo{
-  width:430px;
-  height:430px;
-  position:relative;
-  margin:auto;
-}
 
-.hero-logo{
-  width:430px;
-  margin:auto;
-  text-align:center;
-}
+.stats{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap}
+.stat b{display:block;font-size:28px;color:var(--dark);font-family:'Manrope',sans-serif}
+.stat span{font-size:13px;color:var(--muted)}
 
-.hero-logo img{
-  width:430px;
-  height:auto;
-  display:block;
-  margin:auto;
+.hero-art{position:relative;height:380px}
+.hero-art svg{width:100%;height:100%}
 
-}
-section{padding:68px 0}
-.section-title{text-align:center;margin:0 0 12px;font-size:38px;color:var(--dark)}
-.section-subtitle{text-align:center;color:#65736a;margin:0 auto 35px;max-width:720px;line-height:1.5}
-.catalog{background:var(--light)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{background:#fff;border:1px solid #e1e9e3;border-radius:18px;overflow:hidden;box-shadow:0 7px 25px rgba(10,50,25,.07);display:flex;flex-direction:column}
-.card img{width:100%;aspect-ratio:1.55/1;object-fit:cover;background:#fff}
-.card-body{padding:20px}
-.card h3{margin:0 0 9px;font-size:20px;color:var(--dark)}
-.spec{color:#65736a;margin-bottom:16px}
-.card .btn{width:100%;text-align:center;margin:0}
+/* sections */
+section{padding:64px 0}
+.section-head{max-width:640px;margin:0 auto 36px}
+.eyebrow{color:var(--green);font-weight:700;font-size:14px;margin:0 0 6px}
+.section-title{font-size:32px;margin:0 0 10px;color:var(--dark)}
+.section-title.center{text-align:center;margin-left:auto;margin-right:auto}
+.section-sub{color:var(--muted);line-height:1.5;margin:0}
+.center-wrap{text-align:center}
+
+/* features */
+.features{background:rgba(243,247,242,.86)}
+#catalog{background:rgba(255,255,255,.78)}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.feat-icon{width:44px;height:44px;border-radius:10px;background:#e9f6ea;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.feat h3{margin:0 0 6px;font-size:17px;color:var(--dark)}
+.feat p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+
+/* catalog */
+.filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
+.filter-btn{background:#fff;border:1px solid var(--line);color:var(--dark);padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;transition:.15s ease}
+.filter-btn.active{background:var(--dark);border-color:var(--dark);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid[hidden]{display:none}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s ease, transform .2s ease;opacity:0;transform:translateY(14px) scale(.98);animation:cardIn .38s ease forwards}
+.card:hover{box-shadow:0 12px 28px rgba(7,53,31,.1);transform:translateY(-3px)}
+@keyframes cardIn{to{opacity:1;transform:translateY(0) scale(1)}}
+@media (prefers-reduced-motion: reduce){.card{animation:none;opacity:1;transform:none}}
+.card-visual{aspect-ratio:1.7/1;background:linear-gradient(135deg,#eef8e6,#f7fbf4);display:flex;align-items:center;justify-content:center}
+.card-visual svg{width:62px;height:62px}
+.card-body{padding:18px 20px 20px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--dark)}
+.spec{color:var(--muted);margin-bottom:14px;font-size:14px}
+.card .btn{width:100%;justify-content:center;margin:0;padding:11px}
+
+/* contacts */
 .contact{background:var(--dark);color:#fff}
-.contact .section-title{color:#fff}
-.contact .section-subtitle{color:#d2e0d7}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:850px;margin:auto}
-.contact-card{background:#fff;color:var(--text);padding:25px;border-radius:18px}
-.contact-card h3{margin-top:0;color:var(--green)}
-.contact-card a{color:var(--green);font-weight:800;text-decoration:none}
-footer{background:#042416;color:#b9cabe;text-align:center;padding:24px}
+.contact .section-title,.contact .eyebrow{color:#fff}
+.contact .section-sub{color:#c7d8cc}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto}
+.contact-card{background:#fff;color:var(--text);padding:24px;border-radius:16px}
+.contact-card h3{margin-top:0;color:var(--green);font-size:16px}
+.contact-card a{color:var(--dark);font-weight:800;text-decoration:none;display:block;margin-bottom:6px}
+
+footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size:14px}
+
+/* floating tg button */
+.float-tg{position:fixed;bottom:22px;right:22px;bottom:calc(22px + env(safe-area-inset-bottom,0px));background:var(--green);color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,107,53,.35);text-decoration:none;z-index:40}
+.float-tg svg{width:26px;height:26px}
+
+@media(max-width:900px){
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:1fr 1fr}
+}
 @media(max-width:800px){
-  .nav{min-height:68px}
-  .logo{height:48px}
-  .nav a{margin-left:8px;font-size:14px}
-  .hero{padding:48px 0}
+  .nav-links{position:fixed;top:74px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:16px 6%;gap:16px;transform:translateY(-130%);transition:transform .25s ease}
+  .nav-links.open{transform:translateY(0)}
+  .burger{display:block}
   .hero-grid{grid-template-columns:1fr;text-align:center}
   .hero p{margin-left:auto;margin-right:auto}
-  .grid{grid-template-columns:1fr 1fr}
+  .stats{justify-content:center}
+  .hero-art{height:260px;order:-1}
   .contact-grid{grid-template-columns:1fr}
 }
-@media(max-width:540px){
-  .nav a{display:none}
+@media(max-width:560px){
+  .feat-grid{grid-template-columns:1fr}
   .grid{grid-template-columns:1fr}
-  section{padding:52px 0}
-  h1{font-size:42px}
+  section{padding:48px 0}
 }
 </style>
 </head>
 <body>
 
+<div class="factory-bg" aria-hidden="true">
+  <svg class="factory-machine" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+    <!-- extruder base -->
+    <rect x="10" y="180" width="90" height="70" rx="8" fill="none" stroke="#006b35" stroke-width="6"/>
+    <rect x="46" y="120" width="18" height="64" fill="none" stroke="#006b35" stroke-width="6"/>
+    <!-- blown film bubble, pulsing -->
+    <g>
+      <ellipse cx="55" cy="70" rx="34" ry="56" fill="none" stroke="#5a9c00" stroke-width="6">
+        <animate attributeName="ry" values="56;66;56" dur="3.2s" repeatCount="indefinite"/>
+        <animate attributeName="rx" values="34;30;34" dur="3.2s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+    <!-- guide rollers -->
+    <circle cx="150" cy="60" r="20" fill="none" stroke="#006b35" stroke-width="6">
+      <animateTransform attributeName="transform" type="rotate" from="0 150 60" to="360 150 60" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <line x1="150" y1="60" x2="150" y2="40" stroke="#006b35" stroke-width="5">
+      <animateTransform attributeName="transform" type="rotate" from="0 150 60" to="360 150 60" dur="5s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="240" cy="110" r="24" fill="none" stroke="#006b35" stroke-width="6">
+      <animateTransform attributeName="transform" type="rotate" from="0 240 110" to="-360 240 110" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <line x1="240" y1="110" x2="240" y2="86" stroke="#006b35" stroke-width="5">
+      <animateTransform attributeName="transform" type="rotate" from="0 240 110" to="-360 240 110" dur="6s" repeatCount="indefinite"/>
+    </line>
+    <!-- film path -->
+    <path d="M55 14 V70 M55 126 C55 150 150 170 150 60 M150 60 C150 130 240 90 240 110 M240 134 C240 190 340 200 340 150" fill="none" stroke="#9fcf8a" stroke-width="4"/>
+    <!-- winding roll -->
+    <circle cx="340" cy="150" r="46" fill="none" stroke="#d9a800" stroke-width="7">
+      <animateTransform attributeName="transform" type="rotate" from="0 340 150" to="360 340 150" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="340" cy="150" r="30" fill="none" stroke="#d9a800" stroke-width="4" opacity=".7">
+      <animateTransform attributeName="transform" type="rotate" from="0 340 150" to="360 340 150" dur="9s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+
+  <div class="conveyor-wrap">
+    <div class="conveyor-row">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#00522a" stroke-width="3"/><circle cx="24" cy="24" r="6" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><rect x="12" y="10" width="24" height="30" rx="3" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l-2 22a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3L14 16z" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#00522a" stroke-width="3"/><circle cx="24" cy="24" r="6" stroke="#00522a" stroke-width="3"/></svg>
+      <!-- duplicate set for seamless loop -->
+      <svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#00522a" stroke-width="3"/><circle cx="24" cy="24" r="6" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><rect x="12" y="10" width="24" height="30" rx="3" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l-2 22a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3L14 16z" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#00522a" stroke-width="3"/></svg>
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#00522a" stroke-width="3"/><circle cx="24" cy="24" r="6" stroke="#00522a" stroke-width="3"/></svg>
+    </div>
+  </div>
+</div>
+
 <header>
   <div class="container nav">
-    <a href="#top"><img class="logo" src="logo.png" alt="MASTERKEY"></a>
-    <nav>
+    <a href="#top" class="brand"><span class="brand-mark">MK</span> MASTERKEY</a>
+    <nav class="nav-links" id="navLinks">
       <a href="#catalog">Каталог</a>
+      <a href="#advantages">Почему мы</a>
       <a href="#contacts">Контакты</a>
+      <a href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener" class="nav-cta">Написать в Telegram</a>
     </nav>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -103,194 +213,245 @@ footer{background:#042416;color:#b9cabe;text-align:center;padding:24px}
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="badge">MASTERKEY MCHJ</span>
-     <h1>MASTERKEY — производитель полиэтиленовой продукции</h1>
-      <p>Производим полиэтиленовые пакеты, плёнки и упаковочные материалы различных видов и размеров. Предлагаем решения для бизнеса, производства, торговли и других сфер применения.</p>
+      <span class="badge"><span class="badge-dot"></span> MASTERKEY MCHJ</span>
+      <h1>Полиэтиленовая упаковка под ваши объёмы и размеры</h1>
+      <p>Производим пакеты, плёнки и упаковочные материалы для торговли, производства и пищевой отрасли — от мусорных пакетов до вакуумной упаковки.</p>
       <a class="btn btn-primary" href="#catalog">Смотреть каталог</a>
       <a class="btn btn-secondary" href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener">Написать в Telegram</a>
+      <div class="stats">
+        <div class="stat"><b>15+</b><span>размеров пакетов</span></div>
+        <div class="stat"><b>4</b><span>категории продукции</span></div>
+        <div class="stat"><b>1 кг – 10 кг</b><span>фасовка по весу</span></div>
+      </div>
     </div>
-    <div>
-      <div class="hero-logo">
-  <img src="logo-static.png" alt="MASTERKEY — Надежные решения">
-</div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="200" cy="330" rx="150" ry="24" fill="#dff0da"/>
+        <g transform="translate(60,40)">
+          <rect x="0" y="60" width="130" height="170" rx="14" fill="#ffffff" stroke="#006b35" stroke-width="3"/>
+          <path d="M20 60 V40 a45 45 0 0 1 90 0 v20" stroke="#006b35" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <line x1="18" y1="110" x2="112" y2="110" stroke="#c9e6c2" stroke-width="4"/>
+          <line x1="18" y1="140" x2="112" y2="140" stroke="#c9e6c2" stroke-width="4"/>
+          <line x1="18" y1="170" x2="112" y2="170" stroke="#c9e6c2" stroke-width="4"/>
+        </g>
+        <g transform="translate(210,90)">
+          <rect x="0" y="0" width="110" height="150" rx="55" fill="#ffd91a" opacity="0.9"/>
+          <rect x="18" y="20" width="74" height="110" rx="37" fill="#fff" opacity="0.5"/>
+        </g>
+        <circle cx="70" cy="30" r="18" fill="#8bd400" opacity="0.8"/>
+        <circle cx="330" cy="60" r="12" fill="#006b35" opacity="0.6"/>
+      </svg>
     </div>
   </div>
 </section>
 
-<section id="catalog" class="catalog">
+<section id="advantages" class="features">
   <div class="container">
-    <h2 class="section-title">Каталог</h2>
-    <p class="section-subtitle">MASTERKEY — производитель полиэтиленовой продукции. Выберите подходящий размер и свяжитесь с отделом продаж для уточнения цены и условий поставки.</p>
-    <div class="grid">
-
-      <article class="card">
-        <img src="product-45x50.png" alt="Мусорные пакеты MASTERKEY 45x50 см">
-        <div class="card-body">
-          <h3>Мусорные пакеты 45×50 см</h3>
-          <div class="spec">Полиэтиленовые пакеты · размер 45×50 см</div>
-          <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2045%C3%9750%20%D1%81%D0%BC.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B8%D1%82%D1%8C%20%D1%86%D0%B5%D0%BD%D1%83%20%D0%B8%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8." target="_blank" rel="noopener">Уточнить цену</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="product-50x65.png" alt="Мусорные пакеты MASTERKEY 50x65 см">
-        <div class="card-body">
-          <h3>Мусорные пакеты 50×65 см</h3>
-          <div class="spec">Полиэтиленовые пакеты · размер 50×65 см</div>
-          <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2050%C3%9765%20%D1%81%D0%BC.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B8%D1%82%D1%8C%20%D1%86%D0%B5%D0%BD%D1%83%20%D0%B8%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8." target="_blank" rel="noopener">Уточнить цену</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="product-50x70.png" alt="Мусорные пакеты MASTERKEY 50x70 см">
-        <div class="card-body">
-          <h3>Мусорные пакеты 50×70 см</h3>
-          <div class="spec">Полиэтиленовые пакеты · размер 50×70 см</div>
-          <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2050%C3%9770%20%D1%81%D0%BC.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B8%D1%82%D1%8C%20%D1%86%D0%B5%D0%BD%D1%83%20%D0%B8%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8." target="_blank" rel="noopener">Уточнить цену</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="product-70x70.png" alt="Мусорные пакеты MASTERKEY 70x70 см">
-        <div class="card-body">
-          <h3>Мусорные пакеты 70×70 см</h3>
-          <div class="spec">Полиэтиленовые пакеты · размер 70×70 см</div>
-          <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2070%C3%9770%20%D1%81%D0%BC.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B8%D1%82%D1%8C%20%D1%86%D0%B5%D0%BD%D1%83%20%D0%B8%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8." target="_blank" rel="noopener">Уточнить цену</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="product-70x90.png" alt="Мусорные пакеты MASTERKEY 70x90 см">
-        <div class="card-body">
-          <h3>Мусорные пакеты 70×90 см</h3>
-          <div class="spec">Полиэтиленовые пакеты · размер 70×90 см</div>
-          <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2070%C3%9790%20%D1%81%D0%BC.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B8%D1%82%D1%8C%20%D1%86%D0%B5%D0%BD%D1%83%20%D0%B8%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8." target="_blank" rel="noopener">Уточнить цену</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="product-80x110.png" alt="Мусорные пакеты MASTERKEY 80x110 см">
-        <div class="card-body">
-          <h3>Мусорные пакеты 80×110 см</h3>
-          <div class="spec">Полиэтиленовые пакеты · размер 80×110 см</div>
-          <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2080%C3%97110%20%D1%81%D0%BC.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B8%D1%82%D1%8C%20%D1%86%D0%B5%D0%BD%D1%83%20%D0%B8%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8." target="_blank" rel="noopener">Уточнить цену</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <img src="product-90x120.png" alt="Мусорные пакеты MASTERKEY 90x120 см">
-        <div class="card-body">
-          <h3>Мусорные пакеты 90×120 см</h3>
-          <div class="spec">Полиэтиленовые пакеты · размер 90×120 см</div>
-          <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2090%C3%97120%20%D1%81%D0%BC.%20%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B8%D1%82%D1%8C%20%D1%86%D0%B5%D0%BD%D1%83%20%D0%B8%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%20%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8." target="_blank" rel="noopener">Уточнить цену</a>
-        </div>
-      </article>
-<article class="card">
-    <img src="Термоусадочная пленка.png" alt="Термоусадочная пленка MASTERKEY">
-    <div class="card-body">
-        <h3>Термоусадочная плёнка</h3>
-        <div class="spec">Плёнка для надёжной упаковки и защиты товаров</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересует%20термоусадочная%20плёнка%20MASTERKEY.%20Прошу%20сообщить%20цену%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
+    <div class="section-head center-wrap" style="margin-inline:auto">
+      <p class="eyebrow">Почему мы</p>
+      <h2 class="section-title center">Работаем с бизнесом напрямую</h2>
+      <p class="section-sub">Ниже — то, что важно уточнить при первом заказе; менеджер подтвердит актуальные условия.</p>
     </div>
-</article>
-
-<article class="card">
-    <img src="стрейч пленка.png" alt="Стрейч пленка MASTERKEY">
-    <div class="card-body">
-        <h3>Стрейч-плёнка</h3>
-        <div class="spec">Упаковочная плёнка для надёжной фиксации и защиты товаров</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересует%20стрейч-плёнка%20MASTERKEY.%20Прошу%20сообщить%20цену%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18" stroke="#006b35" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Разные размеры</h3>
+        <p>От компактных пакетов до крупной упаковки — под конкретную задачу.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4z" stroke="#006b35" stroke-width="2"/><path d="M8 7V4h8v3" stroke="#006b35" stroke-width="2"/></svg></div>
+        <h3>Оптовые объёмы</h3>
+        <p>Фасовка по весу — удобно считать и заказывать под торговую точку.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12l7 7L21 5" stroke="#006b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Для пищевой отрасли</h3>
+        <p>Вакуумные пакеты и упаковка для продуктов и салатниц.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12h4l3 8 4-16 3 8h6" stroke="#006b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Прямая связь с отделом продаж</h3>
+        <p>Цена и сроки — сразу в Telegram, без лишних звонков.</p>
+      </div>
     </div>
-</article>
-
-      <article class="card">
-  <img src="Вакуумные пакеты.png" alt="Вакуумные пакеты MASTERKEY">
-  <div class="card-body">
-    <h3>Вакуумные пакеты</h3>
-    <div class="spec">Вакуумные пакеты различных размеров для упаковки и хранения пищевых продуктов</div>
-    <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20вакуумные%20пакеты%20MASTERKEY.%20Прошу%20сообщить%20размеры%2C%20цены%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
   </div>
-</article>
+</section>
 
-
-<article class="card">
-    <img src="отрывной пакет 1 кг.png" alt="Отрывные пакеты MASTERKEY">
-    <div class="card-body">
-        <h3>Отрывные пакеты любых размеров </h3>
-        <div class="spec">Прозрачные полиэтиленовые пакеты для упаковки товаров</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересуют%20отрывные%20пакеты%201%20кг%20MASTERKEY.%20Прошу%20сообщить%20цену%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
+<section id="catalog">
+  <div class="container">
+    <div class="section-head center-wrap" style="margin-inline:auto">
+      <p class="eyebrow">Каталог</p>
+      <h2 class="section-title center">Выберите нужную категорию</h2>
+      <p class="section-sub">Нажмите на вкладку, чтобы отфильтровать продукцию. Точную цену и сроки уточняйте у менеджера.</p>
     </div>
-</article>
 
-<article class="card">
-  <img src="пакеты салатницы.png" alt="Рулонные пакеты для салатниц MASTERKEY">
-  <div class="card-body">
-    <h3>Рулонные пакеты для салатниц</h3>
-    <div class="spec">Рулонные полиэтиленовые пакеты для упаковки салатниц и пищевых продуктов</div>
-    <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20рулонные%20пакеты%20для%20салатниц%20MASTERKEY.%20Прошу%20сообщить%20цены%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
-  </div>
-</article>
-
-<article class="card">
-    <img src="майка пакет.png" alt="Пакеты майка MASTERKEY">
-    <div class="card-body">
-        <h3>Пакеты-майка - 1 кг</h3>
-        <div class="spec">Полиэтиленовые пакеты с ручками различных размеров и цветов</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересуют%20пакеты-майка%20MASTERKEY.%20Прошу%20сообщить%20цену%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
+    <div class="filters" id="filters">
+      <button class="filter-btn" data-filter="trash">Мусорные пакеты</button>
+      <button class="filter-btn" data-filter="film">Плёнки</button>
+      <button class="filter-btn" data-filter="food">Для продуктов</button>
+      <button class="filter-btn" data-filter="tshirt">Пакеты-майка</button>
+      <button class="filter-btn" data-filter="all">Показать всё</button>
     </div>
-</article>
 
-<article class="card">
-  <img src="майка пакет.png" alt="Пакеты-майка 3 кг MASTERKEY">
-  <div class="card-body">
-    <h3>Пакеты-майка — 3 кг</h3>
-    <div class="spec">Прочные полиэтиленовые пакеты-майка для магазинов, торговли и повседневного использования</div>
-    <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%20MASTERKEY%20на%203%20кг.%20Прошу%20сообщить%20цену%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
-  </div>
-</article>
+    <p id="catalogHint" class="section-sub center-wrap" style="margin:0 0 28px">Выберите категорию выше, чтобы увидеть размеры и цены.</p>
 
-<article class="card">
-  <img src="майка пакет.png" alt="Пакеты-майка 5 кг MASTERKEY">
-  <div class="card-body">
-    <h3>Пакеты-майка — 5 кг</h3>
-    <div class="spec">Прочные полиэтиленовые пакеты-майка для магазинов, торговли и повседневного использования</div>
-    <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%20MASTERKEY%20на%205%20кг.%20Прошу%20сообщить%20цену%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
-  </div>
-</article>
+    <div class="grid" id="productGrid" hidden>
+      <!-- trash bags -->
+      <article class="card" data-cat="trash">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#006b35" stroke-width="2.5"/><path d="M6 14h36M18 14V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5" stroke="#006b35" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="card-body"><h3>Мусорные пакеты 45×50 см</h3><div class="spec">Полиэтиленовые пакеты · размер 45×50 см</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2045%C3%9750%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="trash">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#006b35" stroke-width="2.5"/><path d="M6 14h36M18 14V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5" stroke="#006b35" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="card-body"><h3>Мусорные пакеты 50×65 см</h3><div class="spec">Полиэтиленовые пакеты · размер 50×65 см</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2050%C3%9765%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="trash">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#006b35" stroke-width="2.5"/><path d="M6 14h36M18 14V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5" stroke="#006b35" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="card-body"><h3>Мусорные пакеты 50×70 см</h3><div class="spec">Полиэтиленовые пакеты · размер 50×70 см</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2050%C3%9770%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="trash">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#006b35" stroke-width="2.5"/><path d="M6 14h36M18 14V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5" stroke="#006b35" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="card-body"><h3>Мусорные пакеты 70×70 см</h3><div class="spec">Полиэтиленовые пакеты · размер 70×70 см</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2070%C3%9770%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="trash">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#006b35" stroke-width="2.5"/><path d="M6 14h36M18 14V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5" stroke="#006b35" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="card-body"><h3>Мусорные пакеты 70×90 см</h3><div class="spec">Полиэтиленовые пакеты · размер 70×90 см</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2070%C3%9790%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="trash">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#006b35" stroke-width="2.5"/><path d="M6 14h36M18 14V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5" stroke="#006b35" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="card-body"><h3>Мусорные пакеты 80×110 см</h3><div class="spec">Полиэтиленовые пакеты · размер 80×110 см</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2080%C3%97110%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="trash">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#006b35" stroke-width="2.5"/><path d="M6 14h36M18 14V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5" stroke="#006b35" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="card-body"><h3>Мусорные пакеты 90×120 см</h3><div class="spec">Полиэтиленовые пакеты · размер 90×120 см</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2090%C3%97120%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
 
-<article class="card">
-  <img src="майка пакет.png" alt="Пакеты-майка 10 кг MASTERKEY">
-  <div class="card-body">
-    <h3>Пакеты-майка — 10 кг</h3>
-    <div class="spec">Прочные полиэтиленовые пакеты-майка для магазинов, торговли и повседневного использования</div>
-    <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%20MASTERKEY%20на%2010%20кг.%20Прошу%20сообщить%20цену%20и%20условия%20поставки." target="_blank" rel="noopener">Уточнить цену</a>
-  </div>
-</article>
+      <!-- films -->
+      <article class="card" data-cat="film">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#006b35" stroke-width="2.5"/><circle cx="24" cy="24" r="6" stroke="#006b35" stroke-width="2.5"/></svg></div>
+        <div class="card-body"><h3>Термоусадочная плёнка</h3><div class="spec">Плёнка для надёжной упаковки и защиты товаров</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересует%20термоусадочная%20плёнка%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="film">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#006b35" stroke-width="2.5"/><circle cx="24" cy="24" r="6" stroke="#006b35" stroke-width="2.5"/></svg></div>
+        <div class="card-body"><h3>Стрейч-плёнка</h3><div class="spec">Упаковочная плёнка для надёжной фиксации и защиты товаров</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересует%20стрейч-плёнка%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+
+      <!-- food -->
+      <article class="card" data-cat="food">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><rect x="12" y="10" width="24" height="30" rx="3" stroke="#006b35" stroke-width="2.5"/><path d="M16 18h16M16 24h16M16 30h10" stroke="#006b35" stroke-width="2"/></svg></div>
+        <div class="card-body"><h3>Вакуумные пакеты</h3><div class="spec">Разные размеры для упаковки и хранения пищевых продуктов</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20вакуумные%20пакеты%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="food">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><rect x="12" y="10" width="24" height="30" rx="3" stroke="#006b35" stroke-width="2.5"/><path d="M16 18h16M16 24h16M16 30h10" stroke="#006b35" stroke-width="2"/></svg></div>
+        <div class="card-body"><h3>Отрывные пакеты — любые размеры</h3><div class="spec">Прозрачные полиэтиленовые пакеты для упаковки товаров</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересуют%20отрывные%20пакеты%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="food">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><rect x="12" y="10" width="24" height="30" rx="3" stroke="#006b35" stroke-width="2.5"/><path d="M16 18h16M16 24h16M16 30h10" stroke="#006b35" stroke-width="2"/></svg></div>
+        <div class="card-body"><h3>Рулонные пакеты для салатниц</h3><div class="spec">Для упаковки салатниц и пищевых продуктов</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20рулонные%20пакеты%20для%20салатниц%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+
+      <!-- t-shirt bags -->
+      <article class="card" data-cat="tshirt">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l-2 22a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3L14 16z" stroke="#006b35" stroke-width="2.5"/><path d="M17 16c0-4 3-7 7-7s7 3 7 7" stroke="#006b35" stroke-width="2.5"/></svg></div>
+        <div class="card-body"><h3>Пакеты-майка — 1 кг</h3><div class="spec">С ручками, различных размеров и цветов</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересуют%20пакеты-майка%201кг%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="tshirt">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l-2 22a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3L14 16z" stroke="#006b35" stroke-width="2.5"/><path d="M17 16c0-4 3-7 7-7s7 3 7 7" stroke="#006b35" stroke-width="2.5"/></svg></div>
+        <div class="card-body"><h3>Пакеты-майка — 3 кг</h3><div class="spec">Прочные, для магазинов и торговли</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%203кг%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="tshirt">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l-2 22a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3L14 16z" stroke="#006b35" stroke-width="2.5"/><path d="M17 16c0-4 3-7 7-7s7 3 7 7" stroke="#006b35" stroke-width="2.5"/></svg></div>
+        <div class="card-body"><h3>Пакеты-майка — 5 кг</h3><div class="spec">Прочные, для магазинов и торговли</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%205кг%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
+      <article class="card" data-cat="tshirt">
+        <div class="card-visual"><svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l-2 22a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3L14 16z" stroke="#006b35" stroke-width="2.5"/><path d="M17 16c0-4 3-7 7-7s7 3 7 7" stroke="#006b35" stroke-width="2.5"/></svg></div>
+        <div class="card-body"><h3>Пакеты-майка — 10 кг</h3><div class="spec">Прочные, для магазинов и торговли</div>
+        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%2010кг%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      </article>
     </div>
   </div>
 </section>
 
 <section id="contacts" class="contact">
   <div class="container">
-    <h2 class="section-title">Контакты</h2>
-    <p class="section-subtitle">Отдел продаж MASTERKEY</p>
+    <div class="section-head center-wrap" style="margin-inline:auto">
+      <p class="eyebrow">Контакты</p>
+      <h2 class="section-title center">Отдел продаж MASTERKEY</h2>
+    </div>
     <div class="contact-grid">
       <div class="contact-card">
         <h3>Телефоны</h3>
-<p><a href="tel:+998994359444">+998 99 435 94 44</a></p>
-<p><a href="tel:+998998036007">+998 99 803 60 07</a></p>
+        <a href="tel:+998994359444">+998 99 435 94 44</a>
+        <a href="tel:+998998036007">+998 99 803 60 07</a>
       </div>
       <div class="contact-card">
         <h3>Telegram</h3>
-        <p><a href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener">@MirAs_menedjer</a></p>
+        <a href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener">@MirAs_menedjer</a>
       </div>
     </div>
   </div>
 </section>
 </main>
 
-<footer>
-  © MASTERKEY MCHJ — Полиэтиленовые мусорные пакеты
-</footer>
+<a class="float-tg" href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.5 2.7 10.8c-1 .4-1 1.9.1 2.2l4.6 1.5 1.8 5.6c.3.9 1.4 1.1 2 .4l2.6-2.8 4.8 3.5c.8.6 1.9.1 2.1-.9l3-15.4c.2-1.1-.9-2-2.2-1.4zM8.9 14.9l8.6-7.8c.2-.2.5.1.2.3l-7 7.7-.3 3.3-1.5-3.5z"/></svg>
+</a>
+
+<footer>© MASTERKEY MCHJ — Полиэтиленовая продукция и упаковочные материалы</footer>
+
+<script>
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.remove('open');
+}));
+
+const buttons=document.querySelectorAll('.filter-btn');
+const cards=document.querySelectorAll('#productGrid .card');
+const grid=document.getElementById('productGrid');
+const hint=document.getElementById('catalogHint');
+
+buttons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    buttons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+
+    grid.hidden=false;
+    hint.style.display='none';
+
+    let visibleIndex=0;
+    cards.forEach(c=>{
+      const show=(f==='all'||c.dataset.cat===f);
+      c.style.display=show?'flex':'none';
+      if(show){
+        c.style.animation='none';
+        void c.offsetWidth; /* restart animation */
+        c.style.animationDelay=(visibleIndex*45)+'ms';
+        c.style.animation='';
+        visibleIndex++;
+      }
+    });
+
+    grid.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+});
+</script>
 </body>
 </html>
