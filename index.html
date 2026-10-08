@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MASTERKEY — производитель полиэтиленовой продукции</title>
-<meta name="description" content="MASTERKEY — производитель полиэтиленовой продукции. Пакеты, плёнки и упаковочные материалы различных видов и размеров.">
+<title data-i18n="meta.title">MASTERKEY — производитель полиэтиленовой продукции</title>
+<meta name="description" content="MASTERKEY — производитель полиэтиленовой продукции. Пакеты, плёнки и упаковочные материалы различных видов и размеров." data-i18n-attr="content" data-i18n="meta.desc">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,7 +19,6 @@
   --text:#17231c;
   --muted:#5c6b61;
 }
-:root:not([data-theme="light"]){}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:'Inter',Arial,sans-serif;color:var(--text);background:#f6f9f4;-webkit-font-smoothing:antialiased}
@@ -43,18 +42,23 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);border-
 .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;color:var(--dark)}
 .brand-logo{height:38px;width:auto;display:block}
-.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links{display:flex;align-items:center;gap:22px}
 .nav-links a{text-decoration:none;font-weight:600;font-size:15px;color:var(--dark)}
 .nav-cta{background:var(--green);color:#fff !important;padding:10px 18px;border-radius:10px}
 .burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
 .burger span{display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;border-radius:2px}
+ 
+/* language switcher */
+.lang-switch{display:flex;align-items:center;gap:2px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang-btn{border:0;background:none;padding:6px 11px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;letter-spacing:.02em}
+.lang-btn.active{background:var(--dark);color:#fff}
  
 /* hero */
 .hero{background:rgba(255,255,255,.62);padding:64px 0 56px;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px}
 .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);color:var(--dark);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700}
 .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green2)}
-h1{font-size:clamp(34px,4.6vw,54px);line-height:1.08;margin:18px 0 16px;color:var(--dark);font-weight:800;max-width:16ch}
+h1{font-size:clamp(34px,4.6vw,54px);line-height:1.08;margin:18px 0 16px;color:var(--dark);font-weight:800;max-width:17ch}
 .hero p{font-size:18px;line-height:1.55;max-width:560px;color:var(--muted)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:11px;text-decoration:none;font-weight:700;font-size:15px;margin:8px 10px 0 0;border:0;cursor:pointer;transition:transform .15s ease}
 .btn:hover{transform:translateY(-2px)}
@@ -92,16 +96,23 @@ section{padding:64px 0}
 .filter-btn.active{background:var(--dark);border-color:var(--dark);color:#fff}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .grid[hidden]{display:none}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s ease, transform .2s ease;opacity:0;transform:translateY(14px) scale(.98);animation:cardIn .38s ease forwards}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:visible;display:flex;flex-direction:column;transition:box-shadow .2s ease, transform .2s ease;opacity:0;transform:translateY(14px) scale(.98);animation:cardIn .38s ease forwards}
 .card:hover{box-shadow:0 12px 28px rgba(7,53,31,.1);transform:translateY(-3px)}
 @keyframes cardIn{to{opacity:1;transform:translateY(0) scale(1)}}
 @media (prefers-reduced-motion: reduce){.card{animation:none;opacity:1;transform:none}}
-.card-visual{aspect-ratio:1.7/1;background:linear-gradient(135deg,#eef8e6,#f7fbf4);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card-visual{aspect-ratio:1.7/1;background:linear-gradient(135deg,#eef8e6,#f7fbf4);display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:16px 16px 0 0}
 .card-visual img{width:100%;height:100%;object-fit:cover}
-.card-body{padding:18px 20px 20px}
+.card-body{padding:18px 20px 20px;position:relative}
 .card h3{margin:0 0 6px;font-size:17px;color:var(--dark)}
 .spec{color:var(--muted);margin-bottom:14px;font-size:14px}
 .card .btn{width:100%;justify-content:center;margin:0;padding:11px}
+ 
+/* price dropdown */
+.price-dd{position:relative}
+.price-dd-menu{position:absolute;left:0;right:0;bottom:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 32px rgba(7,53,31,.16);padding:6px;display:none;flex-direction:column;gap:2px;z-index:5}
+.price-dd.open .price-dd-menu{display:flex}
+.price-dd-item{background:none;border:0;text-align:left;padding:10px 12px;border-radius:8px;font-size:14px;font-weight:600;color:var(--dark);cursor:pointer}
+.price-dd-item:hover{background:var(--light)}
  
 /* contacts */
 .contact{background:var(--dark);color:#fff}
@@ -117,6 +128,21 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
 /* floating tg button */
 .float-tg{position:fixed;bottom:22px;right:22px;bottom:calc(22px + env(safe-area-inset-bottom,0px));background:var(--green);color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,107,53,.35);text-decoration:none;z-index:40}
 .float-tg svg{width:26px;height:26px}
+ 
+/* modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(7,53,31,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:18px;padding:26px;width:100%;max-width:420px;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+.modal h3{margin:0 0 6px;color:var(--dark);font-size:19px}
+.modal .modal-product{color:var(--muted);font-size:14px;margin:0 0 18px}
+.modal label{display:block;font-size:13px;font-weight:700;color:var(--dark);margin:14px 0 6px}
+.modal input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit}
+.modal input:focus{outline:2px solid var(--green2);outline-offset:1px}
+.modal-actions{display:flex;gap:10px;margin-top:22px}
+.modal-actions .btn{margin:0;flex:1;justify-content:center}
+.modal-cancel{background:var(--light);color:var(--dark)}
+.modal-error{color:#c0392b;font-size:13px;margin-top:10px;display:none}
+.modal-error.show{display:block}
  
 @media(max-width:900px){
   .feat-grid{grid-template-columns:1fr 1fr}
@@ -143,17 +169,14 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
  
 <div class="factory-bg" aria-hidden="true">
   <svg class="factory-machine" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
-    <!-- extruder base -->
     <rect x="10" y="180" width="90" height="70" rx="8" fill="none" stroke="#006b35" stroke-width="6"/>
     <rect x="46" y="120" width="18" height="64" fill="none" stroke="#006b35" stroke-width="6"/>
-    <!-- blown film bubble, pulsing -->
     <g>
       <ellipse cx="55" cy="70" rx="34" ry="56" fill="none" stroke="#5a9c00" stroke-width="6">
         <animate attributeName="ry" values="56;66;56" dur="3.2s" repeatCount="indefinite"/>
         <animate attributeName="rx" values="34;30;34" dur="3.2s" repeatCount="indefinite"/>
       </ellipse>
     </g>
-    <!-- guide rollers -->
     <circle cx="150" cy="60" r="20" fill="none" stroke="#006b35" stroke-width="6">
       <animateTransform attributeName="transform" type="rotate" from="0 150 60" to="360 150 60" dur="5s" repeatCount="indefinite"/>
     </circle>
@@ -166,9 +189,7 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
     <line x1="240" y1="110" x2="240" y2="86" stroke="#006b35" stroke-width="5">
       <animateTransform attributeName="transform" type="rotate" from="0 240 110" to="-360 240 110" dur="6s" repeatCount="indefinite"/>
     </line>
-    <!-- film path -->
     <path d="M55 14 V70 M55 126 C55 150 150 170 150 60 M150 60 C150 130 240 90 240 110 M240 134 C240 190 340 200 340 150" fill="none" stroke="#9fcf8a" stroke-width="4"/>
-    <!-- winding roll -->
     <circle cx="340" cy="150" r="46" fill="none" stroke="#d9a800" stroke-width="7">
       <animateTransform attributeName="transform" type="rotate" from="0 340 150" to="360 340 150" dur="9s" repeatCount="indefinite"/>
     </circle>
@@ -185,7 +206,6 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
       <svg viewBox="0 0 48 48" fill="none"><path d="M14 16h20l-2 22a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3L14 16z" stroke="#00522a" stroke-width="3"/></svg>
       <svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#00522a" stroke-width="3"/></svg>
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#00522a" stroke-width="3"/><circle cx="24" cy="24" r="6" stroke="#00522a" stroke-width="3"/></svg>
-      <!-- duplicate set for seamless loop -->
       <svg viewBox="0 0 48 48" fill="none"><path d="M10 14h28l-2 26a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4L10 14z" stroke="#00522a" stroke-width="3"/></svg>
       <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#00522a" stroke-width="3"/><circle cx="24" cy="24" r="6" stroke="#00522a" stroke-width="3"/></svg>
       <svg viewBox="0 0 48 48" fill="none"><rect x="12" y="10" width="24" height="30" rx="3" stroke="#00522a" stroke-width="3"/></svg>
@@ -200,12 +220,17 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
   <div class="container nav">
     <a href="#top" class="brand"><img class="brand-logo" src="logo.png" alt="MASTERKEY"></a>
     <nav class="nav-links" id="navLinks">
-      <a href="#catalog">Каталог</a>
-      <a href="#advantages">Почему мы</a>
-      <a href="#contacts">Контакты</a>
-      <a href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener" class="nav-cta">Написать в Telegram</a>
+      <a href="#catalog" data-i18n="nav.catalog"></a>
+      <a href="#advantages" data-i18n="nav.advantages"></a>
+      <a href="#contacts" data-i18n="nav.contacts"></a>
+      <a href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener" class="nav-cta" data-i18n="nav.cta"></a>
     </nav>
-    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <div class="lang-switch" id="langSwitch">
+      <button type="button" class="lang-btn" data-lang="ru">RU</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="uz">UZ</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
  
@@ -213,15 +238,15 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="badge"><span class="badge-dot"></span> MASTERKEY MCHJ</span>
-      <h1>Полиэтиленовая упаковка под ваши объёмы и размеры</h1>
-      <p>Производим пакеты, плёнки и упаковочные материалы для торговли, производства и пищевой отрасли — от мусорных пакетов до вакуумной упаковки.</p>
-      <a class="btn btn-primary" href="#catalog">Смотреть каталог</a>
-      <a class="btn btn-secondary" href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener">Написать в Telegram</a>
+      <span class="badge"><span class="badge-dot"></span> <span data-i18n="hero.badge"></span></span>
+      <h1 data-i18n="hero.title"></h1>
+      <p data-i18n="hero.p"></p>
+      <a class="btn btn-primary" href="#catalog" data-i18n="hero.btnCatalog"></a>
+      <a class="btn btn-secondary" href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener" data-i18n="hero.btnTelegram"></a>
       <div class="stats">
-        <div class="stat"><b>15+</b><span>размеров пакетов</span></div>
-        <div class="stat"><b>4</b><span>категории продукции</span></div>
-        <div class="stat"><b>1 кг – 10 кг</b><span>фасовка по весу</span></div>
+        <div class="stat"><b>15+</b><span data-i18n="hero.stat1Label"></span></div>
+        <div class="stat"><b>4</b><span data-i18n="hero.stat2Label"></span></div>
+        <div class="stat"><b>1&nbsp;&ndash;&nbsp;10&nbsp;кг</b><span data-i18n="hero.stat3Label"></span></div>
       </div>
     </div>
     <div class="hero-art">
@@ -233,30 +258,30 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
 <section id="advantages" class="features">
   <div class="container">
     <div class="section-head center-wrap" style="margin-inline:auto">
-      <p class="eyebrow">Почему мы</p>
-      <h2 class="section-title center">Работаем с бизнесом напрямую</h2>
-      <p class="section-sub">Ниже — то, что важно уточнить при первом заказе; менеджер подтвердит актуальные условия.</p>
+      <p class="eyebrow" data-i18n="features.eyebrow"></p>
+      <h2 class="section-title center" data-i18n="features.title"></h2>
+      <p class="section-sub" data-i18n="features.sub"></p>
     </div>
     <div class="feat-grid">
       <div class="feat">
         <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18" stroke="#006b35" stroke-width="2" stroke-linecap="round"/></svg></div>
-        <h3>Разные размеры</h3>
-        <p>От компактных пакетов до крупной упаковки — под конкретную задачу.</p>
+        <h3 data-i18n="feat1.title"></h3>
+        <p data-i18n="feat1.desc"></p>
       </div>
       <div class="feat">
         <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4z" stroke="#006b35" stroke-width="2"/><path d="M8 7V4h8v3" stroke="#006b35" stroke-width="2"/></svg></div>
-        <h3>Оптовые объёмы</h3>
-        <p>Фасовка по весу — удобно считать и заказывать под торговую точку.</p>
+        <h3 data-i18n="feat2.title"></h3>
+        <p data-i18n="feat2.desc"></p>
       </div>
       <div class="feat">
         <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12l7 7L21 5" stroke="#006b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Для пищевой отрасли</h3>
-        <p>Вакуумные пакеты и упаковка для продуктов и салатниц.</p>
+        <h3 data-i18n="feat3.title"></h3>
+        <p data-i18n="feat3.desc"></p>
       </div>
       <div class="feat">
         <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12h4l3 8 4-16 3 8h6" stroke="#006b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Прямая связь с отделом продаж</h3>
-        <p>Цена и сроки — сразу в Telegram, без лишних звонков.</p>
+        <h3 data-i18n="feat4.title"></h3>
+        <p data-i18n="feat4.desc"></p>
       </div>
     </div>
   </div>
@@ -265,108 +290,245 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
 <section id="catalog">
   <div class="container">
     <div class="section-head center-wrap" style="margin-inline:auto">
-      <p class="eyebrow">Каталог</p>
-      <h2 class="section-title center">Выберите нужную категорию</h2>
-      <p class="section-sub">Нажмите на вкладку, чтобы отфильтровать продукцию. Точную цену и сроки уточняйте у менеджера.</p>
+      <p class="eyebrow" data-i18n="catalog.eyebrow"></p>
+      <h2 class="section-title center" data-i18n="catalog.title"></h2>
+      <p class="section-sub" data-i18n="catalog.sub"></p>
     </div>
  
     <div class="filters" id="filters">
-      <button class="filter-btn" data-filter="trash">Мусорные пакеты</button>
-      <button class="filter-btn" data-filter="film">Плёнки</button>
-      <button class="filter-btn" data-filter="food">Для продуктов</button>
-      <button class="filter-btn" data-filter="tshirt">Пакеты-майка</button>
-      <button class="filter-btn" data-filter="all">Показать всё</button>
+      <button class="filter-btn" data-filter="trash" data-i18n="filter.trash"></button>
+      <button class="filter-btn" data-filter="film" data-i18n="filter.film"></button>
+      <button class="filter-btn" data-filter="food" data-i18n="filter.food"></button>
+      <button class="filter-btn" data-filter="tshirt" data-i18n="filter.tshirt"></button>
+      <button class="filter-btn" data-filter="all" data-i18n="filter.all"></button>
     </div>
  
-    <p id="catalogHint" class="section-sub center-wrap" style="margin:0 0 28px">Выберите категорию выше, чтобы увидеть размеры и цены.</p>
+    <p id="catalogHint" class="section-sub center-wrap" style="margin:0 0 28px" data-i18n="catalog.hint"></p>
  
     <div class="grid" id="productGrid" hidden>
-      <!-- trash bags -->
-      <article class="card" data-cat="trash">
-        <div class="card-visual"><img src="product-45x50.png" alt="Мусорные пакеты 45×50 см" loading="lazy"></div>
-        <div class="card-body"><h3>Мусорные пакеты 45×50 см</h3><div class="spec">Полиэтиленовые пакеты · размер 45×50 см</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2045%C3%9750%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="trash" data-product="trash45x50">
+        <div class="card-visual"><img src="product-45x50.png" alt="" data-i18n-alt="prod.trash45x50.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.trash45x50.name"></h3>
+          <div class="spec" data-i18n="prod.trash45x50.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="trash">
-        <div class="card-visual"><img src="product-50x65.png" alt="Мусорные пакеты 50×65 см" loading="lazy"></div>
-        <div class="card-body"><h3>Мусорные пакеты 50×65 см</h3><div class="spec">Полиэтиленовые пакеты · размер 50×65 см</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2050%C3%9765%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="trash" data-product="trash50x65">
+        <div class="card-visual"><img src="product-50x65.png" alt="" data-i18n-alt="prod.trash50x65.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.trash50x65.name"></h3>
+          <div class="spec" data-i18n="prod.trash50x65.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="trash">
-        <div class="card-visual"><img src="product-50x70.png" alt="Мусорные пакеты 50×70 см" loading="lazy"></div>
-        <div class="card-body"><h3>Мусорные пакеты 50×70 см</h3><div class="spec">Полиэтиленовые пакеты · размер 50×70 см</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2050%C3%9770%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="trash" data-product="trash50x70">
+        <div class="card-visual"><img src="product-50x70.png" alt="" data-i18n-alt="prod.trash50x70.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.trash50x70.name"></h3>
+          <div class="spec" data-i18n="prod.trash50x70.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="trash">
-        <div class="card-visual"><img src="product-70x70.png" alt="Мусорные пакеты 70×70 см" loading="lazy"></div>
-        <div class="card-body"><h3>Мусорные пакеты 70×70 см</h3><div class="spec">Полиэтиленовые пакеты · размер 70×70 см</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2070%C3%9770%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="trash" data-product="trash70x70">
+        <div class="card-visual"><img src="product-70x70.png" alt="" data-i18n-alt="prod.trash70x70.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.trash70x70.name"></h3>
+          <div class="spec" data-i18n="prod.trash70x70.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="trash">
-        <div class="card-visual"><img src="product-70x90.png" alt="Мусорные пакеты 70×90 см" loading="lazy"></div>
-        <div class="card-body"><h3>Мусорные пакеты 70×90 см</h3><div class="spec">Полиэтиленовые пакеты · размер 70×90 см</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2070%C3%9790%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="trash" data-product="trash70x90">
+        <div class="card-visual"><img src="product-70x90.png" alt="" data-i18n-alt="prod.trash70x90.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.trash70x90.name"></h3>
+          <div class="spec" data-i18n="prod.trash70x90.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="trash">
-        <div class="card-visual"><img src="product-80x110.png" alt="Мусорные пакеты 80×110 см" loading="lazy"></div>
-        <div class="card-body"><h3>Мусорные пакеты 80×110 см</h3><div class="spec">Полиэтиленовые пакеты · размер 80×110 см</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2080%C3%97110%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="trash" data-product="trash80x110">
+        <div class="card-visual"><img src="product-80x110.png" alt="" data-i18n-alt="prod.trash80x110.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.trash80x110.name"></h3>
+          <div class="spec" data-i18n="prod.trash80x110.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="trash">
-        <div class="card-visual"><img src="product-90x120.png" alt="Мусорные пакеты 90×120 см" loading="lazy"></div>
-        <div class="card-body"><h3>Мусорные пакеты 90×120 см</h3><div class="spec">Полиэтиленовые пакеты · размер 90×120 см</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%83%D1%81%D0%BE%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%20MASTERKEY%2090%C3%97120%20%D1%81%D0%BC." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="trash" data-product="trash90x120">
+        <div class="card-visual"><img src="product-90x120.png" alt="" data-i18n-alt="prod.trash90x120.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.trash90x120.name"></h3>
+          <div class="spec" data-i18n="prod.trash90x120.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
- 
-      <!-- films -->
-      <article class="card" data-cat="film">
-        <div class="card-visual"><img src="%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%83%D1%81%D0%B0%D0%B4%D0%BE%D1%87%D0%BD%D0%B0%D1%8F%20%D0%BF%D0%BB%D0%B5%D0%BD%D0%BA%D0%B0.png" alt="Термоусадочная плёнка" loading="lazy"></div>
-        <div class="card-body"><h3>Термоусадочная плёнка</h3><div class="spec">Плёнка для надёжной упаковки и защиты товаров</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересует%20термоусадочная%20плёнка%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="film" data-product="filmShrink">
+        <div class="card-visual"><img src="Термоусадочная пленка.png" alt="" data-i18n-alt="prod.filmShrink.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.filmShrink.name"></h3>
+          <div class="spec" data-i18n="prod.filmShrink.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="film">
-        <div class="card-visual"><img src="%D1%81%D1%82%D1%80%D0%B5%D0%B9%D1%87%20%D0%BF%D0%BB%D0%B5%D0%BD%D0%BA%D0%B0.png" alt="Стрейч-плёнка" loading="lazy"></div>
-        <div class="card-body"><h3>Стрейч-плёнка</h3><div class="spec">Упаковочная плёнка для надёжной фиксации и защиты товаров</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересует%20стрейч-плёнка%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="film" data-product="filmStretch">
+        <div class="card-visual"><img src="стрейч пленка.png" alt="" data-i18n-alt="prod.filmStretch.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.filmStretch.name"></h3>
+          <div class="spec" data-i18n="prod.filmStretch.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
- 
-      <!-- food -->
-      <article class="card" data-cat="food">
-        <div class="card-visual"><img src="%D0%92%D0%B0%D0%BA%D1%83%D1%83%D0%BC%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D1%8B.png" alt="Вакуумные пакеты" loading="lazy"></div>
-        <div class="card-body"><h3>Вакуумные пакеты</h3><div class="spec">Разные размеры для упаковки и хранения пищевых продуктов</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20вакуумные%20пакеты%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="food" data-product="foodVacuum">
+        <div class="card-visual"><img src="Вакуумные пакеты.png" alt="" data-i18n-alt="prod.foodVacuum.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.foodVacuum.name"></h3>
+          <div class="spec" data-i18n="prod.foodVacuum.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="food">
-        <div class="card-visual"><img src="%D0%BE%D1%82%D1%80%D1%8B%D0%B2%D0%BD%D0%BE%D0%B9%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%201%20%D0%BA%D0%B3.png" alt="Отрывные пакеты — любые размеры" loading="lazy"></div>
-        <div class="card-body"><h3>Отрывные пакеты — любые размеры</h3><div class="spec">Прозрачные полиэтиленовые пакеты для упаковки товаров</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересуют%20отрывные%20пакеты%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="food" data-product="foodTear">
+        <div class="card-visual"><img src="отрывной пакет 1 кг.png" alt="" data-i18n-alt="prod.foodTear.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.foodTear.name"></h3>
+          <div class="spec" data-i18n="prod.foodTear.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="food">
-        <div class="card-visual"><img src="%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D1%8B%20%D1%81%D0%B0%D0%BB%D0%B0%D1%82%D0%BD%D0%B8%D1%86%D1%8B.png" alt="Рулонные пакеты для салатниц" loading="lazy"></div>
-        <div class="card-body"><h3>Рулонные пакеты для салатниц</h3><div class="spec">Для упаковки салатниц и пищевых продуктов</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20рулонные%20пакеты%20для%20салатниц%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="food" data-product="foodSalad">
+        <div class="card-visual"><img src="пакеты салатницы.png" alt="" data-i18n-alt="prod.foodSalad.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.foodSalad.name"></h3>
+          <div class="spec" data-i18n="prod.foodSalad.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
- 
-      <!-- t-shirt bags -->
-      <article class="card" data-cat="tshirt">
-        <div class="card-visual"><img src="%D0%BC%D0%B0%D0%B9%D0%BA%D0%B0%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82.png" alt="Пакеты-майка — 1 кг" loading="lazy"></div>
-        <div class="card-body"><h3>Пакеты-майка — 1 кг</h3><div class="spec">С ручками, различных размеров и цветов</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Интересуют%20пакеты-майка%201кг%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="tshirt" data-product="tshirt1">
+        <div class="card-visual"><img src="майка пакет.png" alt="" data-i18n-alt="prod.tshirt1.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.tshirt1.name"></h3>
+          <div class="spec" data-i18n="prod.tshirt1.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="tshirt">
-        <div class="card-visual"><img src="%D0%BC%D0%B0%D0%B9%D0%BA%D0%B0%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82.png" alt="Пакеты-майка — 3 кг" loading="lazy"></div>
-        <div class="card-body"><h3>Пакеты-майка — 3 кг</h3><div class="spec">Прочные, для магазинов и торговли</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%203кг%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="tshirt" data-product="tshirt3">
+        <div class="card-visual"><img src="майка пакет.png" alt="" data-i18n-alt="prod.tshirt3.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.tshirt3.name"></h3>
+          <div class="spec" data-i18n="prod.tshirt3.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="tshirt">
-        <div class="card-visual"><img src="%D0%BC%D0%B0%D0%B9%D0%BA%D0%B0%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82.png" alt="Пакеты-майка — 5 кг" loading="lazy"></div>
-        <div class="card-body"><h3>Пакеты-майка — 5 кг</h3><div class="spec">Прочные, для магазинов и торговли</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%205кг%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="tshirt" data-product="tshirt5">
+        <div class="card-visual"><img src="майка пакет.png" alt="" data-i18n-alt="prod.tshirt5.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.tshirt5.name"></h3>
+          <div class="spec" data-i18n="prod.tshirt5.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card" data-cat="tshirt">
-        <div class="card-visual"><img src="%D0%BC%D0%B0%D0%B9%D0%BA%D0%B0%20%D0%BF%D0%B0%D0%BA%D0%B5%D1%82.png" alt="Пакеты-майка — 10 кг" loading="lazy"></div>
-        <div class="card-body"><h3>Пакеты-майка — 10 кг</h3><div class="spec">Прочные, для магазинов и торговли</div>
-        <a class="btn btn-primary" href="https://t.me/MirAs_menedjer?text=Здравствуйте.%20Меня%20интересуют%20пакеты-майка%2010кг%20MASTERKEY." target="_blank" rel="noopener">Уточнить цену</a></div>
+      <article class="card" data-cat="tshirt" data-product="tshirt10">
+        <div class="card-visual"><img src="майка пакет.png" alt="" data-i18n-alt="prod.tshirt10.name" loading="lazy"></div>
+        <div class="card-body">
+          <h3 data-i18n="prod.tshirt10.name"></h3>
+          <div class="spec" data-i18n="prod.tshirt10.spec"></div>
+          <div class="price-dd">
+            <button type="button" class="btn btn-primary price-dd-toggle" data-i18n="catalog.getPrice"></button>
+            <div class="price-dd-menu">
+              <button type="button" class="price-dd-item" data-action="wholesale" data-i18n="catalog.wholesale"></button>
+              <button type="button" class="price-dd-item" data-action="lot" data-i18n="catalog.lot"></button>
+            </div>
+          </div>
+        </div>
       </article>
     </div>
   </div>
@@ -375,17 +537,17 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
 <section id="contacts" class="contact">
   <div class="container">
     <div class="section-head center-wrap" style="margin-inline:auto">
-      <p class="eyebrow">Контакты</p>
-      <h2 class="section-title center">Отдел продаж MASTERKEY</h2>
+      <p class="eyebrow" data-i18n="contacts.eyebrow"></p>
+      <h2 class="section-title center" data-i18n="contacts.title"></h2>
     </div>
     <div class="contact-grid">
       <div class="contact-card">
-        <h3>Телефоны</h3>
+        <h3 data-i18n="contacts.phones"></h3>
         <a href="tel:+998994359444">+998 99 435 94 44</a>
         <a href="tel:+998998036007">+998 99 803 60 07</a>
       </div>
       <div class="contact-card">
-        <h3>Telegram</h3>
+        <h3 data-i18n="contacts.telegram"></h3>
         <a href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener">@MirAs_menedjer</a>
       </div>
     </div>
@@ -393,13 +555,594 @@ footer{background:#042416;color:#9fb3a6;text-align:center;padding:22px;font-size
 </section>
 </main>
  
-<a class="float-tg" href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+<a class="float-tg" href="https://t.me/MirAs_menedjer" target="_blank" rel="noopener" aria-label="Telegram">
   <svg viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.5 2.7 10.8c-1 .4-1 1.9.1 2.2l4.6 1.5 1.8 5.6c.3.9 1.4 1.1 2 .4l2.6-2.8 4.8 3.5c.8.6 1.9.1 2.1-.9l3-15.4c.2-1.1-.9-2-2.2-1.4zM8.9 14.9l8.6-7.8c.2-.2.5.1.2.3l-7 7.7-.3 3.3-1.5-3.5z"/></svg>
 </a>
  
-<footer>© MASTERKEY MCHJ — Полиэтиленовая продукция и упаковочные материалы</footer>
+<footer data-i18n="footer.text"></footer>
+ 
+<!-- exchange-lot modal -->
+<div class="modal-overlay" id="lotModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="lotModalTitle">
+    <h3 id="lotModalTitle" data-i18n="modal.title"></h3>
+    <p class="modal-product"><span data-i18n="modal.product"></span>: <span id="lotModalProduct"></span></p>
+    <form id="lotForm">
+      <label for="lotField1" data-i18n="modal.field1Label"></label>
+      <input id="lotField1" type="text" required autocomplete="off">
+      <label for="lotField2" data-i18n="modal.field2Label"></label>
+      <input id="lotField2" type="text" required autocomplete="off">
+      <p class="modal-error" id="lotError" data-i18n="modal.required"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn modal-cancel" id="lotCancel" data-i18n="modal.cancel"></button>
+        <button type="submit" class="btn btn-primary" data-i18n="modal.submit"></button>
+      </div>
+    </form>
+  </div>
+</div>
  
 <script>
+const I18N = {
+  "ru": {
+    "meta.title": "MASTERKEY — производитель полиэтиленовой продукции",
+    "meta.desc": "MASTERKEY — производитель полиэтиленовой продукции. Пакеты, плёнки и упаковочные материалы различных видов и размеров.",
+    "nav.catalog": "Каталог",
+    "nav.advantages": "Почему мы",
+    "nav.contacts": "Контакты",
+    "nav.cta": "Написать в Telegram",
+    "hero.badge": "MASTERKEY MCHJ",
+    "hero.title": "Полиэтиленовая упаковка под ваши объёмы и размеры",
+    "hero.p": "Производим пакеты, плёнки и упаковочные материалы для торговли, производства и пищевой отрасли — от мусорных пакетов до вакуумной упаковки.",
+    "hero.btnCatalog": "Смотреть каталог",
+    "hero.btnTelegram": "Написать в Telegram",
+    "hero.stat1Label": "размеров пакетов",
+    "hero.stat2Label": "категории продукции",
+    "hero.stat3Label": "фасовка по весу",
+    "features.eyebrow": "Почему мы",
+    "features.title": "Работаем с бизнесом напрямую",
+    "features.sub": "Ниже — то, что важно уточнить при первом заказе; менеджер подтвердит актуальные условия.",
+    "feat1.title": "Разные размеры",
+    "feat1.desc": "От компактных пакетов до крупной упаковки — под конкретную задачу.",
+    "feat2.title": "Оптовые объёмы",
+    "feat2.desc": "Фасовка по весу — удобно считать и заказывать под торговую точку.",
+    "feat3.title": "Для пищевой отрасли",
+    "feat3.desc": "Вакуумные пакеты и упаковка для продуктов и салатниц.",
+    "feat4.title": "Прямая связь с отделом продаж",
+    "feat4.desc": "Цена и сроки — сразу в Telegram, без лишних звонков.",
+    "catalog.eyebrow": "Каталог",
+    "catalog.title": "Выберите нужную категорию",
+    "catalog.sub": "Нажмите на вкладку, чтобы отфильтровать продукцию. Точную цену и сроки уточняйте у менеджера.",
+    "catalog.hint": "Выберите категорию выше, чтобы увидеть размеры и цены.",
+    "filter.trash": "Мусорные пакеты",
+    "filter.film": "Плёнки",
+    "filter.food": "Для продуктов",
+    "filter.tshirt": "Пакеты-майка",
+    "filter.all": "Показать всё",
+    "catalog.getPrice": "Узнать цену",
+    "catalog.wholesale": "Оптовая цена",
+    "catalog.lot": "Лот для биржи",
+    "contacts.eyebrow": "Контакты",
+    "contacts.title": "Отдел продаж MASTERKEY",
+    "contacts.phones": "Телефоны",
+    "contacts.telegram": "Telegram",
+    "footer.text": "© MASTERKEY MCHJ — Полиэтиленовая продукция и упаковочные материалы",
+    "modal.title": "Заявка на лот для биржи",
+    "modal.product": "Товар",
+    "modal.field1Label": "Название организации",
+    "modal.field1Ph": "например, ООО «Пример»",
+    "modal.field2Label": "Регион доставки",
+    "modal.field2Ph": "например, Ташкентская область",
+    "modal.submit": "Отправить в Telegram",
+    "modal.cancel": "Отмена",
+    "modal.required": "Пожалуйста, заполните оба поля.",
+    "msg.wholesaleGreeting": "Здравствуйте! Интересует позиция «{product}». Прошу сообщить оптовую цену и условия поставки.",
+    "msg.lotGreeting": "Здравствуйте! Хочу разместить лот на бирже.",
+    "msg.lotProduct": "Товар",
+    "msg.lotCompany": "Название организации",
+    "msg.lotRegion": "Регион доставки",
+    "prod.trash45x50.name": "Мусорные пакеты 45×50 см",
+    "prod.trash45x50.spec": "Полиэтиленовые пакеты · размер 45×50 см",
+    "prod.trash50x65.name": "Мусорные пакеты 50×65 см",
+    "prod.trash50x65.spec": "Полиэтиленовые пакеты · размер 50×65 см",
+    "prod.trash50x70.name": "Мусорные пакеты 50×70 см",
+    "prod.trash50x70.spec": "Полиэтиленовые пакеты · размер 50×70 см",
+    "prod.trash70x70.name": "Мусорные пакеты 70×70 см",
+    "prod.trash70x70.spec": "Полиэтиленовые пакеты · размер 70×70 см",
+    "prod.trash70x90.name": "Мусорные пакеты 70×90 см",
+    "prod.trash70x90.spec": "Полиэтиленовые пакеты · размер 70×90 см",
+    "prod.trash80x110.name": "Мусорные пакеты 80×110 см",
+    "prod.trash80x110.spec": "Полиэтиленовые пакеты · размер 80×110 см",
+    "prod.trash90x120.name": "Мусорные пакеты 90×120 см",
+    "prod.trash90x120.spec": "Полиэтиленовые пакеты · размер 90×120 см",
+    "prod.filmShrink.name": "Термоусадочная плёнка",
+    "prod.filmShrink.spec": "Плёнка для надёжной упаковки и защиты товаров",
+    "prod.filmStretch.name": "Стрейч-плёнка",
+    "prod.filmStretch.spec": "Упаковочная плёнка для надёжной фиксации и защиты товаров",
+    "prod.foodVacuum.name": "Вакуумные пакеты",
+    "prod.foodVacuum.spec": "Разные размеры для упаковки и хранения пищевых продуктов",
+    "prod.foodTear.name": "Отрывные пакеты — любые размеры",
+    "prod.foodTear.spec": "Прозрачные полиэтиленовые пакеты для упаковки товаров",
+    "prod.foodSalad.name": "Рулонные пакеты для салатниц",
+    "prod.foodSalad.spec": "Для упаковки салатниц и пищевых продуктов",
+    "prod.tshirt1.name": "Пакеты-майка — 1 кг",
+    "prod.tshirt1.spec": "С ручками, различных размеров и цветов",
+    "prod.tshirt3.name": "Пакеты-майка — 3 кг",
+    "prod.tshirt3.spec": "Прочные, для магазинов и торговли",
+    "prod.tshirt5.name": "Пакеты-майка — 5 кг",
+    "prod.tshirt5.spec": "Прочные, для магазинов и торговли",
+    "prod.tshirt10.name": "Пакеты-майка — 10 кг",
+    "prod.tshirt10.spec": "Прочные, для магазинов и торговли"
+  },
+  "en": {
+    "meta.title": "MASTERKEY — polyethylene products manufacturer",
+    "meta.desc": "MASTERKEY — a manufacturer of polyethylene products: bags, films and packaging materials of various types and sizes.",
+    "nav.catalog": "Catalog",
+    "nav.advantages": "Why us",
+    "nav.contacts": "Contacts",
+    "nav.cta": "Message us on Telegram",
+    "hero.badge": "MASTERKEY LLC",
+    "hero.title": "Polyethylene packaging for your volumes and sizes",
+    "hero.p": "We manufacture bags, films and packaging materials for retail, production and the food industry — from trash bags to vacuum packaging.",
+    "hero.btnCatalog": "View catalog",
+    "hero.btnTelegram": "Message us on Telegram",
+    "hero.stat1Label": "bag sizes",
+    "hero.stat2Label": "product categories",
+    "hero.stat3Label": "packed by weight",
+    "features.eyebrow": "Why us",
+    "features.title": "We work directly with businesses",
+    "features.sub": "Below are the key points to clarify on your first order; our manager will confirm current terms.",
+    "feat1.title": "A range of sizes",
+    "feat1.desc": "From compact bags to large packaging — tailored to your task.",
+    "feat2.title": "Wholesale volumes",
+    "feat2.desc": "Packed by weight — easy to calculate and order for your store.",
+    "feat3.title": "For the food industry",
+    "feat3.desc": "Vacuum bags and packaging for food and salad containers.",
+    "feat4.title": "Direct line to our sales team",
+    "feat4.desc": "Price and timelines — straight to Telegram, no extra calls.",
+    "catalog.eyebrow": "Catalog",
+    "catalog.title": "Choose a category",
+    "catalog.sub": "Click a tab to filter the products. Confirm the exact price and timelines with our manager.",
+    "catalog.hint": "Choose a category above to see sizes and pricing.",
+    "filter.trash": "Trash bags",
+    "filter.film": "Films",
+    "filter.food": "For food",
+    "filter.tshirt": "T-shirt bags",
+    "filter.all": "Show all",
+    "catalog.getPrice": "Get price",
+    "catalog.wholesale": "Wholesale price",
+    "catalog.lot": "Exchange lot",
+    "contacts.eyebrow": "Contacts",
+    "contacts.title": "MASTERKEY Sales Department",
+    "contacts.phones": "Phones",
+    "contacts.telegram": "Telegram",
+    "footer.text": "© MASTERKEY LLC — Polyethylene products and packaging materials",
+    "modal.title": "Exchange lot request",
+    "modal.product": "Product",
+    "modal.field1Label": "Organization name",
+    "modal.field1Ph": "e.g. Example LLC",
+    "modal.field2Label": "Delivery region",
+    "modal.field2Ph": "e.g. Tashkent region",
+    "modal.submit": "Send to Telegram",
+    "modal.cancel": "Cancel",
+    "modal.required": "Please fill in both fields.",
+    "msg.wholesaleGreeting": "Hello! I'm interested in “{product}”. Please share the wholesale price and delivery terms.",
+    "msg.lotGreeting": "Hello! I would like to place a lot on the exchange.",
+    "msg.lotProduct": "Product",
+    "msg.lotCompany": "Organization name",
+    "msg.lotRegion": "Delivery region",
+    "prod.trash45x50.name": "Trash bags 45×50 cm",
+    "prod.trash45x50.spec": "Polyethylene bags · size 45×50 cm",
+    "prod.trash50x65.name": "Trash bags 50×65 cm",
+    "prod.trash50x65.spec": "Polyethylene bags · size 50×65 cm",
+    "prod.trash50x70.name": "Trash bags 50×70 cm",
+    "prod.trash50x70.spec": "Polyethylene bags · size 50×70 cm",
+    "prod.trash70x70.name": "Trash bags 70×70 cm",
+    "prod.trash70x70.spec": "Polyethylene bags · size 70×70 cm",
+    "prod.trash70x90.name": "Trash bags 70×90 cm",
+    "prod.trash70x90.spec": "Polyethylene bags · size 70×90 cm",
+    "prod.trash80x110.name": "Trash bags 80×110 cm",
+    "prod.trash80x110.spec": "Polyethylene bags · size 80×110 cm",
+    "prod.trash90x120.name": "Trash bags 90×120 cm",
+    "prod.trash90x120.spec": "Polyethylene bags · size 90×120 cm",
+    "prod.filmShrink.name": "Shrink film",
+    "prod.filmShrink.spec": "Film for reliable packaging and product protection",
+    "prod.filmStretch.name": "Stretch film",
+    "prod.filmStretch.spec": "Packaging film for secure wrapping and product protection",
+    "prod.foodVacuum.name": "Vacuum bags",
+    "prod.foodVacuum.spec": "Various sizes for packaging and storing food products",
+    "prod.foodTear.name": "Tear-off bags — any size",
+    "prod.foodTear.spec": "Transparent polyethylene bags for product packaging",
+    "prod.foodSalad.name": "Roll bags for salad containers",
+    "prod.foodSalad.spec": "For packaging salad containers and food products",
+    "prod.tshirt1.name": "T-shirt bags — 1 kg",
+    "prod.tshirt1.spec": "With handles, various sizes and colors",
+    "prod.tshirt3.name": "T-shirt bags — 3 kg",
+    "prod.tshirt3.spec": "Durable, for shops and retail",
+    "prod.tshirt5.name": "T-shirt bags — 5 kg",
+    "prod.tshirt5.spec": "Durable, for shops and retail",
+    "prod.tshirt10.name": "T-shirt bags — 10 kg",
+    "prod.tshirt10.spec": "Durable, for shops and retail"
+  },
+  "uz": {
+    "meta.title": "MASTERKEY — polietilen mahsulotlari ishlab chiqaruvchisi",
+    "meta.desc": "MASTERKEY — polietilen mahsulotlari ishlab chiqaruvchi: turli xil va o‘lchamdagi paketlar, plyonkalar va qadoqlash materiallari.",
+    "nav.catalog": "Katalog",
+    "nav.advantages": "Nega biz",
+    "nav.contacts": "Aloqa",
+    "nav.cta": "Telegram orqali yozing",
+    "hero.badge": "MASTERKEY MCHJ",
+    "hero.title": "Sizning hajm va o‘lchamlaringizga mos polietilen qadoqlash",
+    "hero.p": "Savdo, ishlab chiqarish va oziq-ovqat sohasi uchun paketlar, plyonkalar va qadoqlash materiallari ishlab chiqaramiz — axlat paketlaridan vakuum qadoqlashgacha.",
+    "hero.btnCatalog": "Katalogni ko‘rish",
+    "hero.btnTelegram": "Telegram orqali yozing",
+    "hero.stat1Label": "paket o‘lchamlari",
+    "hero.stat2Label": "mahsulot toifalari",
+    "hero.stat3Label": "vazn bo‘yicha qadoqlash",
+    "features.eyebrow": "Nega biz",
+    "features.title": "Biznes bilan to‘g‘ridan-to‘g‘ri ishlaymiz",
+    "features.sub": "Quyida birinchi buyurtmada aniqlashtirish muhim bo‘lgan jihatlar; menejer dolzarb shartlarni tasdiqlaydi.",
+    "feat1.title": "Turli o‘lchamlar",
+    "feat1.desc": "Ixcham paketlardan katta qadoqlashgacha — aniq vazifa uchun.",
+    "feat2.title": "Optom hajmlar",
+    "feat2.desc": "Vazn bo‘yicha qadoqlash — savdo nuqtasi uchun hisoblash va buyurtma berish qulay.",
+    "feat3.title": "Oziq-ovqat sohasi uchun",
+    "feat3.desc": "Oziq-ovqat va salat idishlari uchun vakuum paketlar va qadoqlash.",
+    "feat4.title": "Savdo bo‘limi bilan to‘g‘ridan-to‘g‘ri aloqa",
+    "feat4.desc": "Narx va muddatlar — qo‘shimcha qo‘ng‘iroqlarsiz, to‘g‘ridan-to‘g‘ri Telegram orqali.",
+    "catalog.eyebrow": "Katalog",
+    "catalog.title": "Kerakli toifani tanlang",
+    "catalog.sub": "Mahsulotlarni saralash uchun bo‘limni bosing. Aniq narx va muddatlarni menejerdan so‘rang.",
+    "catalog.hint": "O‘lcham va narxlarni ko‘rish uchun yuqoridagi toifani tanlang.",
+    "filter.trash": "Axlat paketlari",
+    "filter.film": "Plyonkalar",
+    "filter.food": "Oziq-ovqat uchun",
+    "filter.tshirt": "Maykasimon paketlar",
+    "filter.all": "Hammasini ko‘rsatish",
+    "catalog.getPrice": "Narxni bilish",
+    "catalog.wholesale": "Optom narx",
+    "catalog.lot": "Birja uchun lot",
+    "contacts.eyebrow": "Aloqa",
+    "contacts.title": "MASTERKEY savdo bo‘limi",
+    "contacts.phones": "Telefonlar",
+    "contacts.telegram": "Telegram",
+    "footer.text": "© MASTERKEY MCHJ — Polietilen mahsulotlari va qadoqlash materiallari",
+    "modal.title": "Birja uchun lot so‘rovi",
+    "modal.product": "Mahsulot",
+    "modal.field1Label": "Tashkilot nomi",
+    "modal.field1Ph": "masalan, “Namuna” MCHJ",
+    "modal.field2Label": "Yetkazib berish mintaqasi",
+    "modal.field2Ph": "masalan, Toshkent viloyati",
+    "modal.submit": "Telegramga yuborish",
+    "modal.cancel": "Bekor qilish",
+    "modal.required": "Iltimos, ikkala maydonni ham to‘ldiring.",
+    "msg.wholesaleGreeting": "Assalomu alaykum! “{product}” mahsulotiga qiziqyapman. Optom narxi va yetkazib berish shartlarini ma'lum qilishingizni so‘rayman.",
+    "msg.lotGreeting": "Assalomu alaykum! Birjada lot joylashtirmoqchiman.",
+    "msg.lotProduct": "Mahsulot",
+    "msg.lotCompany": "Tashkilot nomi",
+    "msg.lotRegion": "Yetkazib berish mintaqasi",
+    "prod.trash45x50.name": "Axlat paketlari 45×50 sm",
+    "prod.trash45x50.spec": "Polietilen paketlar · o‘lcham 45×50 sm",
+    "prod.trash50x65.name": "Axlat paketlari 50×65 sm",
+    "prod.trash50x65.spec": "Polietilen paketlar · o‘lcham 50×65 sm",
+    "prod.trash50x70.name": "Axlat paketlari 50×70 sm",
+    "prod.trash50x70.spec": "Polietilen paketlar · o‘lcham 50×70 sm",
+    "prod.trash70x70.name": "Axlat paketlari 70×70 sm",
+    "prod.trash70x70.spec": "Polietilen paketlar · o‘lcham 70×70 sm",
+    "prod.trash70x90.name": "Axlat paketlari 70×90 sm",
+    "prod.trash70x90.spec": "Polietilen paketlar · o‘lcham 70×90 sm",
+    "prod.trash80x110.name": "Axlat paketlari 80×110 sm",
+    "prod.trash80x110.spec": "Polietilen paketlar · o‘lcham 80×110 sm",
+    "prod.trash90x120.name": "Axlat paketlari 90×120 sm",
+    "prod.trash90x120.spec": "Polietilen paketlar · o‘lcham 90×120 sm",
+    "prod.filmShrink.name": "Issiqlikda qisiladigan plyonka",
+    "prod.filmShrink.spec": "Mahsulotlarni ishonchli qadoqlash va himoya qilish uchun plyonka",
+    "prod.filmStretch.name": "Strech plyonka",
+    "prod.filmStretch.spec": "Mahsulotlarni mustahkam o‘rash va himoya qilish uchun qadoqlash plyonkasi",
+    "prod.foodVacuum.name": "Vakuum paketlar",
+    "prod.foodVacuum.spec": "Oziq-ovqat mahsulotlarini qadoqlash va saqlash uchun turli o‘lchamlar",
+    "prod.foodTear.name": "Yirtib olinadigan paketlar — har qanday o‘lcham",
+    "prod.foodTear.spec": "Mahsulotlarni qadoqlash uchun shaffof polietilen paketlar",
+    "prod.foodSalad.name": "Salat idishlari uchun rulon paketlar",
+    "prod.foodSalad.spec": "Salat idishlari va oziq-ovqat mahsulotlarini qadoqlash uchun",
+    "prod.tshirt1.name": "Maykasimon paketlar — 1 kg",
+    "prod.tshirt1.spec": "Dastakli, turli o‘lcham va ranglarda",
+    "prod.tshirt3.name": "Maykasimon paketlar — 3 kg",
+    "prod.tshirt3.spec": "Mustahkam, do‘konlar va savdo uchun",
+    "prod.tshirt5.name": "Maykasimon paketlar — 5 kg",
+    "prod.tshirt5.spec": "Mustahkam, do‘konlar va savdo uchun",
+    "prod.tshirt10.name": "Maykasimon paketlar — 10 kg",
+    "prod.tshirt10.spec": "Mustahkam, do‘konlar va savdo uchun"
+  }
+};
+const PRODUCTS = [
+  {
+    "key": "trash45x50",
+    "cat": "trash",
+    "img": "product-45x50.png",
+    "name": {
+      "ru": "Мусорные пакеты 45×50 см",
+      "en": "Trash bags 45×50 cm",
+      "uz": "Axlat paketlari 45×50 sm"
+    },
+    "spec": {
+      "ru": "Полиэтиленовые пакеты · размер 45×50 см",
+      "en": "Polyethylene bags · size 45×50 cm",
+      "uz": "Polietilen paketlar · o‘lcham 45×50 sm"
+    }
+  },
+  {
+    "key": "trash50x65",
+    "cat": "trash",
+    "img": "product-50x65.png",
+    "name": {
+      "ru": "Мусорные пакеты 50×65 см",
+      "en": "Trash bags 50×65 cm",
+      "uz": "Axlat paketlari 50×65 sm"
+    },
+    "spec": {
+      "ru": "Полиэтиленовые пакеты · размер 50×65 см",
+      "en": "Polyethylene bags · size 50×65 cm",
+      "uz": "Polietilen paketlar · o‘lcham 50×65 sm"
+    }
+  },
+  {
+    "key": "trash50x70",
+    "cat": "trash",
+    "img": "product-50x70.png",
+    "name": {
+      "ru": "Мусорные пакеты 50×70 см",
+      "en": "Trash bags 50×70 cm",
+      "uz": "Axlat paketlari 50×70 sm"
+    },
+    "spec": {
+      "ru": "Полиэтиленовые пакеты · размер 50×70 см",
+      "en": "Polyethylene bags · size 50×70 cm",
+      "uz": "Polietilen paketlar · o‘lcham 50×70 sm"
+    }
+  },
+  {
+    "key": "trash70x70",
+    "cat": "trash",
+    "img": "product-70x70.png",
+    "name": {
+      "ru": "Мусорные пакеты 70×70 см",
+      "en": "Trash bags 70×70 cm",
+      "uz": "Axlat paketlari 70×70 sm"
+    },
+    "spec": {
+      "ru": "Полиэтиленовые пакеты · размер 70×70 см",
+      "en": "Polyethylene bags · size 70×70 cm",
+      "uz": "Polietilen paketlar · o‘lcham 70×70 sm"
+    }
+  },
+  {
+    "key": "trash70x90",
+    "cat": "trash",
+    "img": "product-70x90.png",
+    "name": {
+      "ru": "Мусорные пакеты 70×90 см",
+      "en": "Trash bags 70×90 cm",
+      "uz": "Axlat paketlari 70×90 sm"
+    },
+    "spec": {
+      "ru": "Полиэтиленовые пакеты · размер 70×90 см",
+      "en": "Polyethylene bags · size 70×90 cm",
+      "uz": "Polietilen paketlar · o‘lcham 70×90 sm"
+    }
+  },
+  {
+    "key": "trash80x110",
+    "cat": "trash",
+    "img": "product-80x110.png",
+    "name": {
+      "ru": "Мусорные пакеты 80×110 см",
+      "en": "Trash bags 80×110 cm",
+      "uz": "Axlat paketlari 80×110 sm"
+    },
+    "spec": {
+      "ru": "Полиэтиленовые пакеты · размер 80×110 см",
+      "en": "Polyethylene bags · size 80×110 cm",
+      "uz": "Polietilen paketlar · o‘lcham 80×110 sm"
+    }
+  },
+  {
+    "key": "trash90x120",
+    "cat": "trash",
+    "img": "product-90x120.png",
+    "name": {
+      "ru": "Мусорные пакеты 90×120 см",
+      "en": "Trash bags 90×120 cm",
+      "uz": "Axlat paketlari 90×120 sm"
+    },
+    "spec": {
+      "ru": "Полиэтиленовые пакеты · размер 90×120 см",
+      "en": "Polyethylene bags · size 90×120 cm",
+      "uz": "Polietilen paketlar · o‘lcham 90×120 sm"
+    }
+  },
+  {
+    "key": "filmShrink",
+    "cat": "film",
+    "img": "Термоусадочная пленка.png",
+    "name": {
+      "ru": "Термоусадочная плёнка",
+      "en": "Shrink film",
+      "uz": "Issiqlikda qisiladigan plyonka"
+    },
+    "spec": {
+      "ru": "Плёнка для надёжной упаковки и защиты товаров",
+      "en": "Film for reliable packaging and product protection",
+      "uz": "Mahsulotlarni ishonchli qadoqlash va himoya qilish uchun plyonka"
+    }
+  },
+  {
+    "key": "filmStretch",
+    "cat": "film",
+    "img": "стрейч пленка.png",
+    "name": {
+      "ru": "Стрейч-плёнка",
+      "en": "Stretch film",
+      "uz": "Strech plyonka"
+    },
+    "spec": {
+      "ru": "Упаковочная плёнка для надёжной фиксации и защиты товаров",
+      "en": "Packaging film for secure wrapping and product protection",
+      "uz": "Mahsulotlarni mustahkam o‘rash va himoya qilish uchun qadoqlash plyonkasi"
+    }
+  },
+  {
+    "key": "foodVacuum",
+    "cat": "food",
+    "img": "Вакуумные пакеты.png",
+    "name": {
+      "ru": "Вакуумные пакеты",
+      "en": "Vacuum bags",
+      "uz": "Vakuum paketlar"
+    },
+    "spec": {
+      "ru": "Разные размеры для упаковки и хранения пищевых продуктов",
+      "en": "Various sizes for packaging and storing food products",
+      "uz": "Oziq-ovqat mahsulotlarini qadoqlash va saqlash uchun turli o‘lchamlar"
+    }
+  },
+  {
+    "key": "foodTear",
+    "cat": "food",
+    "img": "отрывной пакет 1 кг.png",
+    "name": {
+      "ru": "Отрывные пакеты — любые размеры",
+      "en": "Tear-off bags — any size",
+      "uz": "Yirtib olinadigan paketlar — har qanday o‘lcham"
+    },
+    "spec": {
+      "ru": "Прозрачные полиэтиленовые пакеты для упаковки товаров",
+      "en": "Transparent polyethylene bags for product packaging",
+      "uz": "Mahsulotlarni qadoqlash uchun shaffof polietilen paketlar"
+    }
+  },
+  {
+    "key": "foodSalad",
+    "cat": "food",
+    "img": "пакеты салатницы.png",
+    "name": {
+      "ru": "Рулонные пакеты для салатниц",
+      "en": "Roll bags for salad containers",
+      "uz": "Salat idishlari uchun rulon paketlar"
+    },
+    "spec": {
+      "ru": "Для упаковки салатниц и пищевых продуктов",
+      "en": "For packaging salad containers and food products",
+      "uz": "Salat idishlari va oziq-ovqat mahsulotlarini qadoqlash uchun"
+    }
+  },
+  {
+    "key": "tshirt1",
+    "cat": "tshirt",
+    "img": "майка пакет.png",
+    "name": {
+      "ru": "Пакеты-майка — 1 кг",
+      "en": "T-shirt bags — 1 kg",
+      "uz": "Maykasimon paketlar — 1 kg"
+    },
+    "spec": {
+      "ru": "С ручками, различных размеров и цветов",
+      "en": "With handles, various sizes and colors",
+      "uz": "Dastakli, turli o‘lcham va ranglarda"
+    }
+  },
+  {
+    "key": "tshirt3",
+    "cat": "tshirt",
+    "img": "майка пакет.png",
+    "name": {
+      "ru": "Пакеты-майка — 3 кг",
+      "en": "T-shirt bags — 3 kg",
+      "uz": "Maykasimon paketlar — 3 kg"
+    },
+    "spec": {
+      "ru": "Прочные, для магазинов и торговли",
+      "en": "Durable, for shops and retail",
+      "uz": "Mustahkam, do‘konlar va savdo uchun"
+    }
+  },
+  {
+    "key": "tshirt5",
+    "cat": "tshirt",
+    "img": "майка пакет.png",
+    "name": {
+      "ru": "Пакеты-майка — 5 кг",
+      "en": "T-shirt bags — 5 kg",
+      "uz": "Maykasimon paketlar — 5 kg"
+    },
+    "spec": {
+      "ru": "Прочные, для магазинов и торговли",
+      "en": "Durable, for shops and retail",
+      "uz": "Mustahkam, do‘konlar va savdo uchun"
+    }
+  },
+  {
+    "key": "tshirt10",
+    "cat": "tshirt",
+    "img": "майка пакет.png",
+    "name": {
+      "ru": "Пакеты-майка — 10 кг",
+      "en": "T-shirt bags — 10 kg",
+      "uz": "Maykasimon paketlar — 10 kg"
+    },
+    "spec": {
+      "ru": "Прочные, для магазинов и торговли",
+      "en": "Durable, for shops and retail",
+      "uz": "Mustahkam, do‘konlar va savdo uchun"
+    }
+  }
+];
+const SALES_HANDLE = 'MirAs_menedjer';
+const EXCHANGE_HANDLE = 'menedjer_otdela_prodaj';
+ 
+function getLang(){
+  return localStorage.getItem('mk_lang') || 'ru';
+}
+ 
+function t(key, lang){
+  lang = lang || getLang();
+  const dict = I18N[lang] || I18N.ru;
+  return dict[key] !== undefined ? dict[key] : (I18N.ru[key] || key);
+}
+ 
+function applyLanguage(lang){
+  document.documentElement.lang = lang;
+  localStorage.setItem('mk_lang', lang);
+ 
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key, lang);
+    if(el.hasAttribute('data-i18n-attr')){
+      el.setAttribute(el.getAttribute('data-i18n-attr'), val);
+    } else {
+      el.textContent = val;
+    }
+  });
+ 
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    el.alt = t(el.getAttribute('data-i18n-alt'), lang);
+  });
+ 
+  document.getElementById('lotField1').placeholder = t('modal.field1Ph', lang);
+  document.getElementById('lotField2').placeholder = t('modal.field2Ph', lang);
+ 
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+}
+ 
+document.getElementById('langSwitch').addEventListener('click', (e) => {
+  const btn = e.target.closest('.lang-btn');
+  if(!btn) return;
+  applyLanguage(btn.dataset.lang);
+});
+ 
+applyLanguage(getLang());
+ 
+/* mobile menu */
 document.getElementById('burger').addEventListener('click',()=>{
   document.getElementById('navLinks').classList.toggle('open');
 });
@@ -407,6 +1150,7 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
   document.getElementById('navLinks').classList.remove('open');
 }));
  
+/* catalog filters */
 const buttons=document.querySelectorAll('.filter-btn');
 const cards=document.querySelectorAll('#productGrid .card');
 const grid=document.getElementById('productGrid');
@@ -427,7 +1171,7 @@ buttons.forEach(btn=>{
       c.style.display=show?'flex':'none';
       if(show){
         c.style.animation='none';
-        void c.offsetWidth; /* restart animation */
+        void c.offsetWidth;
         c.style.animationDelay=(visibleIndex*45)+'ms';
         c.style.animation='';
         visibleIndex++;
@@ -437,7 +1181,92 @@ buttons.forEach(btn=>{
     grid.scrollIntoView({behavior:'smooth',block:'nearest'});
   });
 });
+ 
+/* price dropdowns */
+let openDd = null;
+document.querySelectorAll('.price-dd-toggle').forEach(btn=>{
+  btn.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    const dd = btn.closest('.price-dd');
+    const wasOpen = dd.classList.contains('open');
+    if(openDd && openDd!==dd) openDd.classList.remove('open');
+    dd.classList.toggle('open', !wasOpen);
+    openDd = dd.classList.contains('open') ? dd : null;
+  });
+});
+document.addEventListener('click', ()=>{
+  if(openDd){ openDd.classList.remove('open'); openDd=null; }
+});
+ 
+function productByKey(key){
+  return PRODUCTS.find(p => p.key === key);
+}
+ 
+document.querySelectorAll('.price-dd-item').forEach(item=>{
+  item.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    const card = item.closest('.card');
+    const dd = item.closest('.price-dd');
+    dd.classList.remove('open');
+    openDd = null;
+    const lang = getLang();
+    const key = card.dataset.product;
+    const product = productByKey(key);
+    const productName = product ? product.name[lang] : card.querySelector('h3').textContent;
+ 
+    if(item.dataset.action === 'wholesale'){
+      const text = t('msg.wholesaleGreeting', lang).replace('{product}', productName);
+      window.open('https://t.me/' + SALES_HANDLE + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    } else {
+      openLotModal(productName);
+    }
+  });
+});
+ 
+/* exchange-lot modal logic */
+const lotModal = document.getElementById('lotModal');
+const lotForm = document.getElementById('lotForm');
+const lotField1 = document.getElementById('lotField1');
+const lotField2 = document.getElementById('lotField2');
+const lotError = document.getElementById('lotError');
+const lotModalProduct = document.getElementById('lotModalProduct');
+let currentLotProduct = '';
+ 
+function openLotModal(productName){
+  currentLotProduct = productName;
+  lotModalProduct.textContent = productName;
+  lotField1.value = '';
+  lotField2.value = '';
+  lotError.classList.remove('show');
+  lotModal.classList.add('open');
+  setTimeout(()=>lotField1.focus(), 50);
+}
+function closeLotModal(){
+  lotModal.classList.remove('open');
+}
+document.getElementById('lotCancel').addEventListener('click', closeLotModal);
+lotModal.addEventListener('click', (e)=>{ if(e.target===lotModal) closeLotModal(); });
+ 
+lotForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const v1 = lotField1.value.trim();
+  const v2 = lotField2.value.trim();
+  if(!v1 || !v2){
+    lotError.classList.add('show');
+    return;
+  }
+  lotError.classList.remove('show');
+  const lang = getLang();
+  const lines = [
+    t('msg.lotGreeting', lang),
+    t('msg.lotProduct', lang) + ': ' + currentLotProduct,
+    t('msg.lotCompany', lang) + ': ' + v1,
+    t('msg.lotRegion', lang) + ': ' + v2
+  ];
+  const text = lines.join('\n');
+  closeLotModal();
+  window.open('https://t.me/' + EXCHANGE_HANDLE + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+});
 </script>
 </body>
 </html>
- 
